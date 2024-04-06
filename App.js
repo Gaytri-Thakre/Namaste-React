@@ -14,7 +14,40 @@ const jsxHeading = (<h1 className="heading">Namaste React using JSX</h1>);
 console.log(jsxHeading );
 // same thing both are React element
 
+// React Functional Component
+const HeadingComponent1 = () =>{
+    return (
+    <div>
+        <h1>Namaste React Functional Component1 </h1>
+    </div>
+    );
+}
+// Component Composition
+const HeadingComponent2 = () => {
+    return(
+    <div>
+        <HeadingComponent1/>
+        <h1>Namaste React Functional Component2 </h1>
+        hi oo working like this also
+    </div>
+    );
+};
+const headingElement = <h4>{jsxHeading} Namaste React Element</h4>
+const HeadingComponent3 =function(){
+    return(
+        <div>
+            {100+500}
+            {headingElement}
+            <h2>First</h2>
+            {HeadingComponent1()}
+            <h2>Second</h2>
+            <HeadingComponent2/>
+            <h2>third</h2>
+            <h1>Namaste React Functional Component3</h1>
+        </div>
+    )
+}
 
 const root =ReactDOM.createRoot(document.getElementById("root"));
 // root.render(heading);
-root.render(jsxHeading);
+root.render(<HeadingComponent3/>);
