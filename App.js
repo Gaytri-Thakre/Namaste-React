@@ -1,53 +1,90 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-// React Element:
-// React.createElement=object=>rendered on DOM become HTML element
-// Creating React element using core React
-const heading = React.createElement("h1",{id:"heading"},"Namaste react ");
-// Creating React element using JSX
-// JSX transpiled before it reaches the JS engine
-// parcel is doing this transpilation with help of babel
-const jsxHeading = (<h1 className="heading">Namaste React using JSX</h1>);
-// jsx =>React.createElement =>JS Object =>Rendered on DOM as HTML element
-// console.log(heading );
-console.log(jsxHeading );
-// same thing both are React element
-
-// React Functional Component
-const HeadingComponent1 = () =>{
+//**
+ /* Header
+//  -Logo 
+// -Nav Items
+ /* Body
+//  Search 
+/* RestaurantContainer
+/*RestaurantCard
+// Img
+// Name,Star Rating,Cuisine,Delivery Time
+ /* Footer
+//  Copyright
+// Links
+// Address
+// Contact
+ /* 
+ */
+const Header = () =>{
     return (
-    <div>
-        <h1>Namaste React Functional Component1 </h1>
-    </div>
-    );
+        <div className="header">
+            <div className="logo-container">
+                <img className="logo" class src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5ychB0gzKUiciTunIPeII_aIoptW3k81YQpa0wryEFA&s"></img>
+            </div>
+            <div className="nav-items">
+                <ul>
+                    <li>Home</li>
+                    <li>About Us</li>
+                    <li>Contact Us</li>
+                    <li>Cart</li>
+                </ul>
+            </div>
+        </div>
+    )
 }
-// Component Composition
-const HeadingComponent2 = () => {
+const styleCard={
+    backgroundColor: "#f0f0f0",
+}
+const ResCard=()=>{
     return(
-    <div>
-        <HeadingComponent1/>
-        <h1>Namaste React Functional Component2 </h1>
-        hi oo working like this also
-    </div>
-    );
-};
-const headingElement = <h4>{jsxHeading} Namaste React Element</h4>
-const HeadingComponent3 =function(){
+        <div className="res-card" style={styleCard}>
+            <img className="res-logo" src="https://b.zmtcdn.com/data/pictures/chains/2/16505332/ce9dc1719a09c806a0a76896988866e5_featured_v2.jpg?output-format=webp"></img>
+            <h3 className="res-name">Madras Cafe</h3>
+            <h4>Meghana Foods</h4>
+            <p>Biryani,North Indian,Asian</p>
+            <div className="res-card-des">
+                <p>4.4 stars</p>
+                <p>38 minutes</p>
+            </div>
+            
+        </div>
+    )
+}
+const Body=()=>{
     return(
         <div>
-            {100+500}
-            {headingElement}
-            <h2>First</h2>
-            {HeadingComponent1()}
-            <h2>Second</h2>
-            <HeadingComponent2/>
-            <h2>third</h2>
-            <h1>Namaste React Functional Component3</h1>
+            <div className="search">Search</div>
+            <div className="Restaurant-Container">
+                <ResCard/>
+                <ResCard/>
+                <ResCard/>
+                <ResCard/>
+                <ResCard/>
+                <ResCard/>
+                <ResCard/>
+                <ResCard/>
+                <ResCard/>
+                <ResCard/>
+                <ResCard/>
+                <ResCard/>
+            </div>
+
+        </div>
+    )
+}
+const AppLayout =() =>{
+    return(
+        <div className="app">
+            {/* Header */}
+            <Header/>
+            <Body/>
         </div>
     )
 }
 
 const root =ReactDOM.createRoot(document.getElementById("root"));
-// root.render(heading);
-root.render(<HeadingComponent3/>);
+
+root.render(<AppLayout/>);
