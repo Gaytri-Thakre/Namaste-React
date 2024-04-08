@@ -1,145 +1,124 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-//**
- /* Header
-//  -Logo 
-// -Nav Items
- /* Body
-//  Search 
-/* RestaurantContainer
-/*RestaurantCard
-// Img
-// Name,Star Rating,Cuisine,Delivery Time
- /* Footer
-//  Copyright
-// Links
-// Address
-// Contact
- /* 
- */
-const resObj ={
-    type: "restaurant",
-    data: {
-      type: "F",
-      id: "74453",
-      name: "Domino's Pizza",
-      uuid: "87727dbd-7f2b-4857-9763-359624165845",
-      city: "21",
-      area: "Athwa",
-      totalRatingsString: "1000+ ratings",
-      cloudinaryImageId: "bz9zkh2aqywjhpankb07",
-      cuisines: ["Pizzas"],
-      tags: [],
-      costForTwo: 40000,
-      costForTwoString: "₹400 FOR TWO",
-      deliveryTime: 45,
-      minDeliveryTime: 45,
-      maxDeliveryTime: 45,
-      slaString: "45 MINS",
-      lastMileTravel: 0,
-      slugs: {
-        restaurant: "dominos-pizza-majura-nondh-test_surat",
-        city: "surat",
-      },
-      cityState: "21",
-      address:
-        "Shop 32 To 35, Sheetal Shopping Square,Near Lb Turning Point, Bhatar Road,MAJURA NONDH, Surat,GUJARAT-395001",
-      locality: "Bhatar Road",
-      parentId: 2456,
-      unserviceable: false,
-      veg: true,
-      select: false,
-      favorite: false,
-      tradeCampaignHeaders: [],
-      aggregatedDiscountInfo: {
-        header: "FREE DELIVERY",
-        shortDescriptionList: [
-          {
-            meta: "FREE DELIVERY",
-            discountType: "FREE_DELIVERY",
-            operationType: "RESTAURANT",
-          },
-        ],
-        descriptionList: [
-          {
-            meta: "FREE DELIVERY",
-            discountType: "FREE_DELIVERY",
-            operationType: "RESTAURANT",
-          },
-        ],
-        subHeader: "",
-        headerType: 0,
-        superFreedel: "",
-      },
-      aggregatedDiscountInfoV2: {
-        header: "",
-        shortDescriptionList: [
-          {
-            meta: "Free Delivery",
-            discountType: "FREE_DELIVERY",
-            operationType: "RESTAURANT",
-          },
-        ],
-        descriptionList: [
-          {
-            meta: "FREE DELIVERY",
-            discountType: "FREE_DELIVERY",
-            operationType: "RESTAURANT",
-          },
-        ],
-        subHeader: "",
-        headerType: 0,
-        superFreedel: "",
-      },
-      chain: [],
-      feeDetails: {
-        fees: [],
-        totalFees: 0,
-        message: "",
-        title: "",
-        amount: "",
-        icon: "",
-      },
-      availability: {
-        opened: true,
-        nextOpenMessage: "",
-        nextCloseMessage: "",
-      },
-      longDistanceEnabled: 0,
-      rainMode: "NONE",
-      thirdPartyAddress: false,
-      thirdPartyVendor: "",
-      adTrackingID: "",
-      badges: {
-        imageBased: [],
-        textBased: [],
-        textExtendedBadges: [],
-      },
-      lastMileTravelString: "2.1 kms",
-      hasSurge: false,
-      sla: {
-        restaurantId: "74453",
+const resList = [
+    {
+      type: "restaurant",
+      data: {
+        type: "F",
+        id: "74453",
+        name: "Domino's Pizza",
+        uuid: "87727dbd-7f2b-4857-9763-359624165845",
+        city: "21",
+        area: "Athwa",
+        totalRatingsString: "1000+ ratings",
+        cloudinaryImageId: "bz9zkh2aqywjhpankb07",
+        cuisines: ["Pizzas"],
+        tags: [],
+        costForTwo: 40000,
+        costForTwoString: "₹400 FOR TWO",
         deliveryTime: 45,
         minDeliveryTime: 45,
         maxDeliveryTime: 45,
+        slaString: "45 MINS",
         lastMileTravel: 0,
-        lastMileDistance: 0,
-        serviceability: "SERVICEABLE",
+        slugs: {
+          restaurant: "dominos-pizza-majura-nondh-test_surat",
+          city: "surat",
+        },
+        cityState: "21",
+        address:
+          "Shop 32 To 35, Sheetal Shopping Square,Near Lb Turning Point, Bhatar Road,MAJURA NONDH, Surat,GUJARAT-395001",
+        locality: "Bhatar Road",
+        parentId: 2456,
+        unserviceable: false,
+        veg: true,
+        select: false,
+        favorite: false,
+        tradeCampaignHeaders: [],
+        aggregatedDiscountInfo: {
+          header: "FREE DELIVERY",
+          shortDescriptionList: [
+            {
+              meta: "FREE DELIVERY",
+              discountType: "FREE_DELIVERY",
+              operationType: "RESTAURANT",
+            },
+          ],
+          descriptionList: [
+            {
+              meta: "FREE DELIVERY",
+              discountType: "FREE_DELIVERY",
+              operationType: "RESTAURANT",
+            },
+          ],
+          subHeader: "",
+          headerType: 0,
+          superFreedel: "",
+        },
+        aggregatedDiscountInfoV2: {
+          header: "",
+          shortDescriptionList: [
+            {
+              meta: "Free Delivery",
+              discountType: "FREE_DELIVERY",
+              operationType: "RESTAURANT",
+            },
+          ],
+          descriptionList: [
+            {
+              meta: "FREE DELIVERY",
+              discountType: "FREE_DELIVERY",
+              operationType: "RESTAURANT",
+            },
+          ],
+          subHeader: "",
+          headerType: 0,
+          superFreedel: "",
+        },
+        chain: [],
+        feeDetails: {
+          fees: [],
+          totalFees: 0,
+          message: "",
+          title: "",
+          amount: "",
+          icon: "",
+        },
+        availability: {
+          opened: true,
+          nextOpenMessage: "",
+          nextCloseMessage: "",
+        },
+        longDistanceEnabled: 0,
         rainMode: "NONE",
-        longDistance: "NOT_LONG_DISTANCE",
-        preferentialService: false,
-        iconType: "EMPTY",
+        thirdPartyAddress: false,
+        thirdPartyVendor: "",
+        adTrackingID: "",
+        badges: {
+          imageBased: [],
+          textBased: [],
+          textExtendedBadges: [],
+        },
+        lastMileTravelString: "2.1 kms",
+        hasSurge: false,
+        sla: {
+          restaurantId: "74453",
+          deliveryTime: 45,
+          minDeliveryTime: 45,
+          maxDeliveryTime: 45,
+          lastMileTravel: 0,
+          lastMileDistance: 0,
+          serviceability: "SERVICEABLE",
+          rainMode: "NONE",
+          longDistance: "NOT_LONG_DISTANCE",
+          preferentialService: false,
+          iconType: "EMPTY",
+        },
+        promoted: false,
+        avgRating: "4.0",
+        totalRatings: 1000,
+        new: false,
       },
-      promoted: false,
-      avgRating: "4.0",
-      totalRatings: 1000,
-      new: false,
+      subtype: "basic",
     },
-    subtype: "basic",
-  }
-
-  const resList = [
     {
       type: "restaurant",
       data: {
@@ -1836,77 +1815,4 @@ const resObj ={
       subtype: "basic",
     },
   ];
-
-const Header = () =>{
-    return (
-        <div className="header">
-            <div className="logo-container">
-                <img className="logo" class src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5ychB0gzKUiciTunIPeII_aIoptW3k81YQpa0wryEFA&s"></img>
-            </div>
-            <div className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About Us</li>
-                    <li>Contact Us</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    )
-}
-
-const ResCard=(props)=>{
-  const {resData} = props;
-  console.log(resData.data.name);
-    return(
-        <div className="res-card" style={{backgroundColor: "#f0f0f0"}}>
-            <img className="res-logo" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+resData.data.cloudinaryImageId}></img>
-            <h3 className="res-name">{resData.data.name}</h3>
-            <h4>Meghana Foods</h4>
-            <p>{resData.data.cuisines.join(',')}</p>
-            <div className="res-card-des">
-                <p>{resData.data.avgRating} stars</p>
-                <p>{resData.data.deliveryTime} minutes</p>
-            </div>
-            
-        </div>
-    )
-}
-const Body=()=>{
-    return(
-        <div>
-            <div className="search">Search</div>
-            <div className="Restaurant-Container">
-                <ResCard resData={resList[0]}/>
-                <ResCard resData={resList[1]}/>
-                <ResCard resData={resList[2]}/>
-                <ResCard resData={resList[3]}/>
-                <ResCard resData={resList[4]}/>
-                <ResCard resData={resList[5]}/>
-                <ResCard resData={resList[6]}/>
-                <ResCard resData={resList[7]}/>
-                <ResCard resData={resList[8]}/>
-                <ResCard resData={resList[9]}/>
-                <ResCard resData={resList[10]}/>
-                <ResCard resData={resList[11]}/>
-                <ResCard resData={resList[12]}/>
-                <ResCard resData={resList[13]}/>
-                <ResCard resData={resObj}/>
-            </div>
-
-        </div>
-    )
-}
-const AppLayout =() =>{
-    return(
-        <div className="app">
-            {/* Header */}
-            <Header/>
-            <Body/>
-        </div>
-    )
-}
-
-const root =ReactDOM.createRoot(document.getElementById("root"));
-
-root.render(<AppLayout/>);
+  export default resList;
