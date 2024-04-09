@@ -8,6 +8,7 @@ import Shimmer from './Shimmer';
 const Body=()=>{
   // state variable useState()
   const [listOfRestaurants,setlistOfRestaurants] = useState([]);
+  const [FilterRestaurants,setFilterRestaurants] =useState([]);
   const [searchText,setsearchText]=useState("")
   // normal js variable
   // const list=[{},{}]
@@ -23,6 +24,7 @@ const Body=()=>{
   }
   // useeffect:
   useEffect(()=>{
+
     fetchData();
   },[]);
   const fetchData= async()=>{
@@ -32,11 +34,12 @@ const Body=()=>{
     json= await data.json();
     console.log(json);
     setlistOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+    setFilterRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
   console.log("Body render");
   // Conditional rendering:
   
-    return listOfRestaurants.length===0?<Shimmer/>:(
+    return listOfRestaurants.length==0?<Shimmer/>:(
         <div>
             
             <div className="filter">
@@ -51,13 +54,15 @@ const Body=()=>{
                     // Filter by category
                     // update the UI
                     console.log(searchText)
+                    const filterRes = listOfRestaurants.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
+                    setFilterRestaurants(filterRes);
                   }}>search</button>
               </div>
               <button className="top-rated-btn" onClick={ClickHandler}>Top Rated Button</button>
             </div>
             <div className="Restaurant-Container">
               {
-                listOfRestaurants.map((restaurant) => <ResCard key={restaurant.info.id} resData ={restaurant}/>)
+                FilterRestaurants.map((restaurant) => <ResCard key={restaurant.info.id} resData ={restaurant}/>)
               }
               
             </div>
