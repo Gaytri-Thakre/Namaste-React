@@ -8,7 +8,7 @@ import Shimmer from './Shimmer';
 const Body=()=>{
   // state variable useState()
   const [listOfRestaurants,setlistOfRestaurants] = useState([]);
- 
+  const [searchText,setsearchText]=useState("")
   // normal js variable
   // const list=[{},{}]
   
@@ -38,7 +38,21 @@ const Body=()=>{
   
     return listOfRestaurants.length===0?<Shimmer/>:(
         <div>
+            
             <div className="filter">
+              <div className='search'>
+                  <input type="text" className='search-box' value={searchText} 
+                  onChange={
+                    (e)=>{
+                      setsearchText(e.target.value)
+                    }
+                  }></input>
+                  <button onClick={()=>{
+                    // Filter by category
+                    // update the UI
+                    console.log(searchText)
+                  }}>search</button>
+              </div>
               <button className="top-rated-btn" onClick={ClickHandler}>Top Rated Button</button>
             </div>
             <div className="Restaurant-Container">
