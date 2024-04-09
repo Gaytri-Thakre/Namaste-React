@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 import ResCard from "./ResCard";
-
+import Shimmer from './Shimmer';
 
 const Body=()=>{
   // state variable useState()
@@ -31,10 +31,12 @@ const Body=()=>{
     );
     json= await data.json();
     console.log(json);
-    setlistOfRestaurants(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+    setlistOfRestaurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
   };
   console.log("Body render");
-    return(
+  // Conditional rendering:
+  
+    return listOfRestaurants.length===0?<Shimmer/>:(
         <div>
             <div className="filter">
               <button className="top-rated-btn" onClick={ClickHandler}>Top Rated Button</button>
