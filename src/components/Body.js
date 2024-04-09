@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 import ResCard from "./ResCard";
-import resList from "../utils/mockData";
+
 
 const Body=()=>{
   // state variable useState()
-  const [listOfRestaurants,setlistOfRestaurants] = useState(resList);
+  const [listOfRestaurants,setlistOfRestaurants] = useState([]);
  
   // normal js variable
   // const list=[{},{}]
@@ -15,23 +15,24 @@ const Body=()=>{
   function ClickHandler(){
     // filter logic here
     
-    const FilterRestaurants = listOfRestaurants.filter(
+    const FilterRestaurants = resData.filter(
       (res) => (res.data.avgRating)>4
     );
     setlistOfRestaurants(FilterRestaurants);
     console.log(FilterRestaurants);
   }
   // useeffect:
-  // useEffect(()=>{
-  //   fetchData();
-  // },[]);
-  // const fetchData= async()=>{
-  //   const data= await fetch(
-
-  //   );
-  //   json= await data.json();
-  //   console.log(json);
-  // };
+  useEffect(()=>{
+    fetchData();
+  },[]);
+  const fetchData= async()=>{
+    const data= await fetch(
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=19.07480&lng=72.88560&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+    );
+    json= await data.json();
+    console.log(json);
+    setlistOfRestaurants(json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants);
+  };
   console.log("Body render");
     return(
         <div>
