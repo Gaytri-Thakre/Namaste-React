@@ -16,11 +16,11 @@ const Body=()=>{
   function ClickHandler(){
     // filter logic here
     
-    const FilterRestaurants = resData.filter(
-      (res) => (res.data.avgRating)>4
+    const topres = FilterRestaurants.filter(
+      (res) => (res.info.avgRating)>4
     );
-    setlistOfRestaurants(FilterRestaurants);
-    console.log(FilterRestaurants);
+    setFilterRestaurants(topres);
+    console.log(topres);
   }
   // useeffect:
   useEffect(()=>{
