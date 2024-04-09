@@ -1,9 +1,10 @@
 import React from 'react';
 import { useState } from 'react';
-
+import { useEffect } from 'react';
 
 import ResCard from "./ResCard";
 import resList from "../utils/mockData";
+
 const Body=()=>{
   // state variable useState()
   const [listOfRestaurants,setlistOfRestaurants] = useState(resList);
@@ -20,6 +21,18 @@ const Body=()=>{
     setlistOfRestaurants(FilterRestaurants);
     console.log(FilterRestaurants);
   }
+  // useeffect:
+  // useEffect(()=>{
+  //   fetchData();
+  // },[]);
+  // const fetchData= async()=>{
+  //   const data= await fetch(
+
+  //   );
+  //   json= await data.json();
+  //   console.log(json);
+  // };
+  console.log("Body render");
     return(
         <div>
             <div className="filter">
@@ -27,7 +40,7 @@ const Body=()=>{
             </div>
             <div className="Restaurant-Container">
               {
-                listOfRestaurants.map((restaurant) => <ResCard key={restaurant.data.id} resData ={restaurant}/>)
+                listOfRestaurants.map((restaurant) => <ResCard key={restaurant.info.id} resData ={restaurant}/>)
               }
               
             </div>
