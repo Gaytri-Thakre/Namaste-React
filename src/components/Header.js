@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useState ,useEffect} from "react";
 import {CDN_URL} from "../utils/constants";
+
 const Header = () =>{
+
     const [LoginBtn,setLoginBtn]=useState("Login");
+    useEffect(()=>{
+        console.log("UseEffect Called")
+    },[]);
     console.log("header is rendered");
     return (
         <div className="header">
