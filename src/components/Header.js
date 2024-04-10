@@ -5,8 +5,8 @@ const Header = () =>{
 
     const [LoginBtn,setLoginBtn]=useState("Login");
     useEffect(()=>{
-        console.log("UseEffect Called")
-    },[]);
+        console.log("Header UseEffect Called")
+    },[LoginBtn]);
     console.log("header is rendered");
     return (
         <div className="header">
