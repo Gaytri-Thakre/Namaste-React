@@ -65,3 +65,10 @@
     display: flex;
     gap: 4px;
 }
+
+.UserCard{
+    padding:25px 10px;
+    margin-bottom: 5px;
+    width:300px;
+    border: 3px solid black;
+}
