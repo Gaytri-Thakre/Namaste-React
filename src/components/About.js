@@ -8,20 +8,23 @@ class App extends React.Component{
     super();
     
   }
+  componentDidMount(){
+    console.log("Parent Component did Mount");
+  }
   render(){
     console.log("Parent Render is called")
+
     return(
       
       <div>
         <h1>About Page(Class)</h1>
         {/* <User name={"Gaytri Thakre"}/> */}
-        <UserClass name={"Gaytri Thakre"}></UserClass>
+        <UserClass name={"First Child"}></UserClass>
+        <UserClass name={"Second Child"}></UserClass>
       </div>
     )
   }
-  componentDidMount(){
-    console.log("Parent Component did Mount");
-  }
+  
 }
 // const App = () => {
 //   return (

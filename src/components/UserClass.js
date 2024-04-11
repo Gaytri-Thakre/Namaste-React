@@ -2,8 +2,9 @@ import React from "react"
 
 class UserClass  extends React.Component{
     constructor(props){
-        console.log("Child Constructor is called");
         super(props);
+        console.log(this.props.name+"Child Constructor is called");
+        
         console.log(props);
         this.state={
             count:1,
@@ -12,7 +13,7 @@ class UserClass  extends React.Component{
         
     }
     render(){
-        console.log("Child Render is called");
+        console.log(this.props.name+"Child Render is called");
         return(
             <div className="UserCard">
                 <h4>Count:{this.state.count}</h4>
@@ -28,7 +29,7 @@ class UserClass  extends React.Component{
         )
     }
     componentDidMount(){
-        console.log("Child Component did Mount")
+        console.log(this.props.name+"Child Component did Mount")
     }
 }
 export default UserClass;
