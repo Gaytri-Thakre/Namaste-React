@@ -5,31 +5,41 @@ class UserClass  extends React.Component{
         super(props);
         console.log(this.props.name+"Child Constructor is called");
         
-        console.log(props);
-        this.state={
-            count:1,
-           
+        this.state ={
+            userInfo:{
+                name: "Gaytri Thakre",
+                location: "Mumbai",
+                
+            },
+            
         }
         
+        
+    }
+    async componentDidMount(){
+        // console.log(this.props.name+"Child Component did Mount")
+        const data = await fetch("https://api.github.com/users/Gaytri-Thakre");
+        const json = await data.json();
+        console.log(json);
+        this.setState({
+            userInfo:json,
+        });
     }
     render(){
-        console.log(this.props.name+"Child Render is called");
+        // console.log(this.props.name+"Child Render is called");
+        const {name,location,avatar_url} = this.state.userInfo;
         return(
             <div className="UserCard">
-                <h4>Count:{this.state.count}</h4>
-                <button onClick={()=>{
-                        // never update the state variables directly
-                          this.setState({
-                              count:this.state.count+1,
-                          }) 
-                }}>Count Increase</button>
-                <h1>Name:{this.props.name}</h1>
-                <h2>Location: Mumbai</h2>
+                
+                <img src={avatar_url}></img>
+                <h1>Name:{name}</h1>
+                <h2>location: {location}</h2>
             </div>
         )
     }
-    componentDidMount(){
-        console.log(this.props.name+"Child Component did Mount")
+    componentWillUnmount(){
+        console.log("Unmounted User component")
     }
+    
 }
 export default UserClass;

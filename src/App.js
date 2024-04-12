@@ -4,10 +4,17 @@ import Header from "./components/Header";
 import About from "./components/About"
 import Body from "./components/Body";
 import Contact from "./components/Contact";
-import Restaurant from "./components/Restaurant";
+import RestaurantMenu from "./components/RestaurantMenu";
 import Error from "./components/Error";
 import { createBrowserRouter,Outlet,RouterProvider } from "react-router-dom";
-  
+// import Grocery from "./components/Grocery";
+
+// Chunking,code splitting,lazy loading,ondemand loading
+import { lazy } from "react";
+import { Suspense } from "react";
+import Shimmer from "./components/Shimmer";
+const Grocery = lazy(()=> import ("./components/Grocery"));
+
 
 
 
@@ -43,8 +50,13 @@ const appRouter = createBrowserRouter([
                 element: <Contact/>
             },
             {
+                
+                path:"/grocery",
+                element:<Suspense fallback={<Shimmer/>}><Grocery/></Suspense>
+            },
+            {
                 path:"/restaurant/:resID",
-                element:<Restaurant/>
+                element:<RestaurantMenu/>
             }
         ],
         errorElement: <Error/>,

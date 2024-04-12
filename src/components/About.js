@@ -4,8 +4,8 @@ import UserClass from './UserClass';
 import React from 'react';
 class App extends React.Component{
   constructor(){
-    console.log("Parent Constructor is called");
     super();
+    console.log("Parent Constructor is called");
     
   }
   componentDidMount(){
@@ -19,8 +19,9 @@ class App extends React.Component{
       <div>
         <h1>About Page(Class)</h1>
         {/* <User name={"Gaytri Thakre"}/> */}
-        <UserClass name={"First Child"}></UserClass>
-        <UserClass name={"Second Child"}></UserClass>
+        
+        <UserClass name={"First "}></UserClass>
+        
       </div>
     )
   }
