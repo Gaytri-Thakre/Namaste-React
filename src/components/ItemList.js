@@ -1,7 +1,15 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { addItem } from '../utils/cartSlice';
 
 
 const ItemList = ({items}) => {
+    
+    const dispatch = useDispatch();
+    const handleAddItem = (item)=>{
+        // dispatch an action
+        dispatch(addItem(item));
+    }
     
   return (
     <div>
@@ -17,7 +25,7 @@ const ItemList = ({items}) => {
                     </p>
                 </div>
                 <div className='w-3/12 relative '>
-                    <button className='p-2 text-white bg-black shadow-lg absolute   rounded-lg'>Add+</button>
+                    <button className='p-2 text-white bg-black shadow-lg absolute   rounded-lg' onClick={()=>handleAddItem(item)}>Add+</button>
                     <img className='w-6/12 rounded-md' src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+item.card.info.imageId}></img> 
                 </div>
                 

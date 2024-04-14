@@ -4,6 +4,7 @@ import {CDN_URL} from "../utils/constants";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "./UserContext";
+import { useSelector } from "react-redux";
 const Header = () =>{
 
     const [LoginBtn,setLoginBtn]=useState("Login");
@@ -14,6 +15,9 @@ const Header = () =>{
     const onlinestatus = useOnlineStatus();
     const {loggedInUser} = useContext(UserContext);
     console.log(loggedInUser);
+
+    // Subscribing to the store using Selector
+    const cartItems = useSelector((Appstore)=>Appstore.cart.items)
     return (
         <div className="relative w-[1200px] mx-auto flex items-center justify-between">
             <img  src={CDN_URL} width="125px" height="30px"></img>
@@ -34,7 +38,10 @@ const Header = () =>{
                         <Link to="/grocery">Grocery</Link>
                     </li>
                     
-                    <li className="font-mullish py-7  hover: cursor-pointer transition-all duration-200 relative group">Cart</li>
+                    <li className="font-mullish py-7  hover: cursor-pointer transition-all duration-200 relative group">
+                        <Link to="/cart">Cart ({cartItems.length})</Link>
+                        
+                    </li>
                     <button className="px-6  font-mullish border rounded-sm text-sm font-medium bg-white text-lightBlue300 transition all duration-200
                 hover:text-lightBlue500 flex justify-evenly" onClick={
                         ()=>{
