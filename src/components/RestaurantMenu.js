@@ -1,28 +1,42 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom';
 import useRestaurantMenu from '../utils/useRestaurantMenu';
+import RestaurantCategory from './RestaurantCategory';
 import Shimmer from './Shimmer';
 const RestaurantMenu = () => {
+  
   const {resID}=useParams();
   const resInfo = useRestaurantMenu(resID);
-  if(resInfo===null){return <Shimmer/>}  
-  console.log(resInfo);
+  const [showindex,setShowIndex] = useState(null);
+  if(resInfo===null){return <Shimmer/>} 
+  
+  
+  
   // const {name,defaultPrice,description} = DishList;
-  const {name,city,cuisines,costForTwoMessage} = resInfo?.cards[2]?.card?.card?.info
-  const DishList =resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards
+  const {name,avgRating,city,cuisines,costForTwoMessage} = resInfo?.cards[2]?.card?.card?.info
+  const DishList =resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards;
+  const categories =resInfo?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    c=>c.card?.card?.['@type'] === "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory");
+  
   return (
-    
-    <div className='menu'>
-      <h1>{name}</h1>
-      <h4>{city}</h4>
-      <h4>{cuisines}</h4>
-      <h4>{costForTwoMessage}</h4>
-      <h4>{cuisines}</h4>
-      <ul>
-          {DishList.map(Dish => <li key={Dish.card.info.key}>
-            {Dish.card.info.name }- {"Rs"} {Dish.card.info.price/100 || Dish.card.info.defaultPrice/100 }
-          </li>)}
-      </ul>
+    <div className='mx-auto max-w-[1200px] flex flex-col  justify-around items-center'>
+      
+      <div className='flex flex-col'>
+        <h1 className='font-bold text-xl'>{name}</h1>
+        <div className='flex gap-3'>
+          <h4>{avgRating}</h4>
+          <h4>{costForTwoMessage}</h4>
+        </div>
+        <p className='text-bold text-lg'>{cuisines.join(", ")}</p>
+      </div>
+      {/* categories */}
+      {categories.map((category,index)=>
+      // controlled componenet
+        <RestaurantCategory key={category?.card?.card?.name} data={category?.card?.card} showItems={index === showindex ? true : false}
+        setShowIndex={()=>setShowIndex(index)}
+        />)
+      }
+      
     </div>
   )
 }
